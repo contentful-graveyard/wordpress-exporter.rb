@@ -1,0 +1,7 @@
+#PATH to all data
+data_dir: /tmp/data
+
+########## IMPORT DATA TO CONTENTFUL ##########
+
+## WORDPRESS
+wordpress_xml_path: /Users/piotrprotas/Documents/RUBY_CONTENTUL/wordpress_adapter/wordpress_settings/wordpress.xml

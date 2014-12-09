@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require 'escort'
+require_relative '../lib/cli'
+
+Escort::App.create do |app|
+  app.summary 'Executable file of Wordpress exporter'
+
+  app.options do |opts|
+    opts.opt :file, '--config-file', :short => '-f', :long => '--config-file', :type => :string
+
+    app.command '--extract-to-json' do |command|
+      command.summary 'Extract data from Wordpress XML dump file and save as JSON files'
+      command.action do |options, arguments|
+        Command::CLI.new(options, arguments).execute
+      end
+    end
+  end
+end
