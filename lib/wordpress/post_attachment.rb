@@ -1,3 +1,5 @@
+require_relative 'post'
+
 module Contentful
   module Exporter
     module Wordpress

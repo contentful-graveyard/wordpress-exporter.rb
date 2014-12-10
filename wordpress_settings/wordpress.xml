@@ -82,7 +82,7 @@
   <dc:creator>szpryc</dc:creator>
   <guid isPermaLink="false">http://szpryc.wordpress.com/?page_id=1</guid>
   <description/>
-  <content:encoded><![CDATA[This is an example of a page. Unlike posts, which are displayed on your blog’s front page in the order they’re published, pages are better suited for more timeless content that you want to be easily accessible, like your About or Contact information. Click the Edit link to make changes to this page or <a title="Direct link to Add New in the Admin Dashboard" href="/wp-admin/post-new.php?post_type=page">add another page</a>.]]></content:encoded>
+  <content:encoded><![CDATA[This is an example of a page.]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
   <wp:post_id>1</wp:post_id>
   <wp:post_date>2014-11-26 11:49:06</wp:post_date>

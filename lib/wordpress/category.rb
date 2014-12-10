@@ -1,3 +1,5 @@
+require_relative 'blog'
+
 module Contentful
   module Exporter
     module Wordpress

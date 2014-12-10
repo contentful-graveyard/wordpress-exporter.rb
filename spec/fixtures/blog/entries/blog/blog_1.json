@@ -1,0 +1,62 @@
+{
+  "id": "szpryc_wordpress_com",
+  "title": "Mój blog 2",
+  "posts": [
+    {
+      "id": "post_1",
+      "type": "Entry"
+    },
+    {
+      "id": "post_3",
+      "type": "Entry"
+    },
+    {
+      "id": "post_5",
+      "type": "Entry"
+    },
+    {
+      "id": "post_9",
+      "type": "Entry"
+    },
+    {
+      "id": "post_11",
+      "type": "Entry"
+    },
+    {
+      "id": "post_15",
+      "type": "Entry"
+    },
+    {
+      "id": "post_21",
+      "type": "Entry"
+    }
+  ],
+  "categories": [
+    {
+      "id": "category_14786",
+      "type": "Entry"
+    },
+    {
+      "id": "category_2214351",
+      "type": "Entry"
+    },
+    {
+      "id": "category_8076",
+      "type": "Entry"
+    },
+    {
+      "id": "category_11599757",
+      "type": "Entry"
+    }
+  ],
+  "tags": [
+    {
+      "id": "tag_2656354",
+      "type": "Entry"
+    },
+    {
+      "id": "tag_306830130",
+      "type": "Entry"
+    }
+  ]
+}
