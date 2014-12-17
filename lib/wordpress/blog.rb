@@ -5,7 +5,6 @@ module Contentful
   module Exporter
     module Wordpress
       class Blog < ::Escort::ActionCommand::Base
-
         attr_reader :xml, :config
 
         def initialize(xml_document, config)
@@ -26,8 +25,8 @@ module Contentful
         end
 
         def link_asset(asset)
-            asset.keep_if { |key, _v| key if key == :id }
-            asset.merge!(type: 'File')
+          asset.keep_if { |key, _v| key if key == :id }
+          asset.merge!(type: 'File')
         end
 
         def create_directory(path)
@@ -51,11 +50,11 @@ module Contentful
 
         def extracted_data
           {
-              id: id,
-              title: title,
-              posts: link_entry(posts),
-              categories: link_entry(categories),
-              tags: link_entry(tags)
+            id: id,
+            title: title,
+            posts: link_entry(posts),
+            categories: link_entry(categories),
+            tags: link_entry(tags)
           }
         end
 
@@ -78,7 +77,6 @@ module Contentful
         def title
           xml.at_xpath('//title').text
         end
-
       end
     end
   end

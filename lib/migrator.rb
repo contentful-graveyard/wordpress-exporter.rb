@@ -1,9 +1,7 @@
 require_relative 'configuration'
 require_relative 'wordpress/export'
 
-
 class Migrator
-
   attr_reader :exporter,  :config
 
   def initialize(settings)

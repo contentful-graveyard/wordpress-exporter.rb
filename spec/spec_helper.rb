@@ -9,4 +9,3 @@ require 'rspec/its'
 require 'yaml'
 require 'json'
 require 'nokogiri'
-

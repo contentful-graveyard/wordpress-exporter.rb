@@ -4,7 +4,6 @@ module Contentful
   module Exporter
     module Wordpress
       class PostCategoryDomain < Post
-
         attr_reader :post, :xml, :config
 
         def initialize(xml, post, config)
@@ -56,7 +55,7 @@ module Contentful
         end
 
         def normalized_data(domain, path)
-          {id: domain_id(domain, path)}
+          { id: domain_id(domain, path) }
         end
 
         def prefix_id(domain_path)
@@ -66,7 +65,6 @@ module Contentful
         def domain_path_name(domain_path)
           '//wp:category' == domain_path ? 'wp:cat_name' : 'wp:tag_name'
         end
-
       end
     end
   end

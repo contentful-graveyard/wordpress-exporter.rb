@@ -30,14 +30,14 @@ module Contentful
         end
 
         it 'link_entry' do
-          entry = [{test: 'remove', id: 'entry_id'}, {test: 'remove', id: 'entry_id_2'}]
+          entry = [{ test: 'remove', id: 'entry_id' }, { test: 'remove', id: 'entry_id_2' }]
           link_entry = @blog.link_entry(entry)
           expect(link_entry.count).to eq 2
           expect(link_entry).to include(id: 'entry_id', type: 'Entry')
         end
 
         it 'link_asset' do
-          asset = {test: 'remove', id: 'asset_id'}
+          asset = { test: 'remove', id: 'asset_id' }
           link_asset = @blog.link_asset(asset)
           expect(link_asset.count).to eq 2
           expect(link_asset).to include(id: 'asset_id', type: 'File')

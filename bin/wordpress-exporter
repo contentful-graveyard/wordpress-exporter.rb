@@ -7,7 +7,7 @@ Escort::App.create do |app|
   app.summary 'Executable file of Wordpress exporter'
 
   app.options do |opts|
-    opts.opt :file, '--config-file', :short => '-f', :long => '--config-file', :type => :string
+    opts.opt :file, '--config-file', short: '-f', long: '--config-file', type: :string
 
     app.command '--extract-to-json' do |command|
       command.summary 'Extract data from Wordpress XML dump file and save as JSON files'

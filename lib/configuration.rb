@@ -20,6 +20,5 @@ module Contentful
     def validate_required_parameters
       fail ArgumentError, 'Set PATH to data_dir. Folder where all data will be stored. Check README' if config['data_dir'].nil?
     end
-
   end
 end

@@ -4,7 +4,6 @@ module Contentful
   module Exporter
     module Wordpress
       class Tag < Blog
-
         def initialize(xml, config)
           @xml = xml
           @config = config
@@ -28,9 +27,9 @@ module Contentful
 
         def extracted_data(tag)
           {
-              id: id(tag),
-              nicename: slug(tag),
-              name: name(tag)
+            id: id(tag),
+            nicename: slug(tag),
+            name: name(tag)
           }
         end
 
@@ -49,7 +48,6 @@ module Contentful
         def name(tag)
           tag.xpath('wp:tag_name').text
         end
-
       end
     end
   end

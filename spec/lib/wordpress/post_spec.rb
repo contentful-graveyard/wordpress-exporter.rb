@@ -24,7 +24,7 @@ module Contentful
 
         it 'extract_data' do
           post_xml = @xml_doc.xpath('//item').to_a.first
-          post = @post.send(:extract_data,post_xml)
+          post = @post.send(:extract_data, post_xml)
           expect(post.count).to eq 5
           expect(post[:id]).to eq 'post_1'
           expect(post[:title]).to eq 'Informacje'

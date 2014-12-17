@@ -14,7 +14,6 @@ module Contentful
   module Exporter
     module Wordpress
       class Export
-
         attr_reader :wordpress_xml, :config
 
         def initialize(settings)

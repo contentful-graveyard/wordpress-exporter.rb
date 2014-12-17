@@ -4,7 +4,6 @@ module Contentful
   module Exporter
     module Wordpress
       class Category < Blog
-
         def initialize(xml, config)
           @xml = xml
           @config = config
@@ -28,9 +27,9 @@ module Contentful
 
         def extracted_category(category)
           {
-              id: id(category),
-              nicename: nice_name(category),
-              name: name(category)
+            id: id(category),
+            nicename: nice_name(category),
+            name: name(category)
           }
         end
 
@@ -49,7 +48,6 @@ module Contentful
         def name(category)
           category.xpath('wp:cat_name').text
         end
-
       end
     end
   end
