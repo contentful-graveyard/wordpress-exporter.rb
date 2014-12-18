@@ -5,12 +5,12 @@ module Contentful
     module Wordpress
       class PostCategoryDomain < Post
 
-        attr_reader :post, :xml, :config
+        attr_reader :post, :xml, :settings
 
-        def initialize(xml, post, config)
+        def initialize(xml, post, settings)
           @xml = xml
           @post = post
-          @config = config
+          @settings = settings
         end
 
         def extract_tags

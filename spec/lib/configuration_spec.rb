@@ -19,7 +19,7 @@ module Contentful
       expect(configuration.collections_dir).to eq 'path_to_data_dir/collections'
       expect(configuration.data_dir).to eq 'path_to_data_dir'
       expect(configuration.entries_dir).to eq 'path_to_data_dir/entries'
-      expect(configuration.config['wordpress_xml_path']).to eq 'path_to_xml_file.xml'
+      expect(configuration.wordpress_xml).to eq 'path_to_xml_file.xml'
     end
 
   end

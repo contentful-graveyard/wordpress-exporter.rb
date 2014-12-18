@@ -5,14 +5,14 @@ module Contentful
     module Wordpress
       class Category < Blog
 
-        def initialize(xml, config)
+        def initialize(xml, settings)
           @xml = xml
-          @config = config
+          @settings = settings
         end
 
         def categories_extractor
           Escort::Logger.output.puts('Extracting blog categories...')
-          create_directory("#{config.entries_dir}/category")
+          create_directory("#{settings.entries_dir}/category")
           extract_categories
         end
 
@@ -21,7 +21,7 @@ module Contentful
         def extract_categories
           categories.each_with_object([]) do |category, categories|
             normalized_category = extracted_category(category)
-            write_json_to_file("#{config.entries_dir}/category/#{id(category)}.json", normalized_category)
+            write_json_to_file("#{settings.entries_dir}/category/#{id(category)}.json", normalized_category)
             categories << normalized_category
           end
         end

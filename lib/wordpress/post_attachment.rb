@@ -5,18 +5,18 @@ module Contentful
     module Wordpress
       class PostAttachment < Post
 
-        attr_reader :post, :config
+        attr_reader :post, :settings
 
-        def initialize(post, config)
+        def initialize(post, settings)
           @post = post
-          @config = config
+          @settings = settings
         end
 
         def attachment_extractor
-          create_directory("#{config.assets_dir}/attachment_post")
+          create_directory("#{settings.assets_dir}/attachment_post")
           asset = {id: attachment_id, description: attachment_description, url: attachment_url}
           unless asset[:url].nil?
-            write_json_to_file("#{config.assets_dir}/attachment_post/#{attachment_id}.json", asset)
+            write_json_to_file("#{settings.assets_dir}/attachment_post/#{attachment_id}.json", asset)
             asset
           end
         end

@@ -16,12 +16,12 @@ module Contentful
 
         before do
           xml_doc = Nokogiri::XML(File.open('spec/fixtures/wordpress.xml'))
-          @blog = Blog.new(xml_doc, @config)
+          @blog = Blog.new(xml_doc, @settings)
         end
 
         it 'initialize' do
           expect(@blog.xml).to be_kind_of Nokogiri::XML::Document
-          expect(@blog.config).to be_kind_of Contentful::Configuration
+          expect(@blog.settings).to be_kind_of Contentful::Configuration
         end
 
         it 'blog_extractor' do
