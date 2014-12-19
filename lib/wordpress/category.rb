@@ -11,7 +11,7 @@ module Contentful
         end
 
         def categories_extractor
-          Escort::Logger.output.puts('Extracting blog categories...')
+          output_logger.info 'Extracting blog categories...'
           create_directory("#{settings.entries_dir}/category")
           extract_categories
         end

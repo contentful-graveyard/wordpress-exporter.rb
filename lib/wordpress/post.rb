@@ -13,7 +13,7 @@ module Contentful
         end
 
         def post_extractor
-          Escort::Logger.output.puts('Extracting posts...')
+          output_logger.info 'Extracting posts...'
           create_directory("#{settings.entries_dir}/post")
           extract_posts
         end
