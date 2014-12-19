@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
-    <title>Mój blog 2</title>
+    <title>Moj blog 2</title>
     <link>http://szpryc.wordpress.com</link>
     <description/>
     <pubDate>Mon, 01 Dec 2014 09:12:28 +0000</pubDate>
@@ -53,7 +53,7 @@
     <generator>http://wordpress.com/</generator>
     <image>
       <url>https://s2.wp.com/i/buttonw-com.png</url>
-      <title> &#187; Mój blog 2</title>
+      <title> &#187; Moj blog 2</title>
       <link>http://szpryc.wordpress.com</link>
     </image>
     <item>
