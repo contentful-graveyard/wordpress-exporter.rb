@@ -1,10 +1,10 @@
 require 'time'
-require 'escort'
+require 'logger'
 
 module Contentful
   module Exporter
     module Wordpress
-      class Blog < ::Escort::ActionCommand::Base
+      class Blog
 
         attr_reader :xml, :settings
 
@@ -40,10 +40,14 @@ module Contentful
           end
         end
 
+        def output_logger
+          Logger.new(STDOUT)
+        end
+
         private
 
         def extract_blog
-          Escort::Logger.output.puts('Extracting blog data...')
+          output_logger.info('Extracting blog data...')
           create_directory("#{settings.entries_dir}/blog")
           blog = extracted_data
           write_json_to_file("#{settings.entries_dir}/blog/blog_1.json", blog)

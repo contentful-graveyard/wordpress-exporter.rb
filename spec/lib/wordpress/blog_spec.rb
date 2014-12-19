@@ -25,7 +25,6 @@ module Contentful
         end
 
         it 'blog_extractor' do
-          allow(Escort::Logger).to receive(:puts).with('Extracting blog data...')
           allow(Blog).to receive(:extract_blog)
         end
 
