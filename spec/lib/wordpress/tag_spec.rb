@@ -12,11 +12,11 @@ module Contentful
 
         before do
           xml_doc = Nokogiri::XML(File.open('spec/fixtures/wordpress.xml'))
-          @tag = Tag.new(xml_doc, @config)
+          @tag = Tag.new(xml_doc, @settings)
         end
 
         it 'initialize' do
-          expect(@tag.config).to be_kind_of Contentful::Configuration
+          expect(@tag.settings).to be_kind_of Contentful::Configuration
           expect(@tag.xml).to be_kind_of Nokogiri::XML::Document
         end
 

@@ -7,6 +7,6 @@ RSpec.shared_context 'shared_configuration', :a => :b do
           wordpress_xml_path: spec/fixtures/wordpress.xml
     EOF
     yaml = YAML.load(yaml_text)
-    @config = Contentful::Configuration.new(yaml)
+    @settings = Contentful::Configuration.new(yaml)
   end
 end

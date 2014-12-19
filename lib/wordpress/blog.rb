@@ -6,15 +6,15 @@ module Contentful
     module Wordpress
       class Blog < ::Escort::ActionCommand::Base
 
-        attr_reader :xml, :config
+        attr_reader :xml, :settings
 
-        def initialize(xml_document, config)
+        def initialize(xml_document, settings)
           @xml = xml_document
-          @config = config
+          @settings = settings
         end
 
         def blog_extractor
-          create_directory(config.data_dir)
+          create_directory(settings.data_dir)
           extract_blog
         end
 
@@ -44,9 +44,9 @@ module Contentful
 
         def extract_blog
           Escort::Logger.output.puts('Extracting blog data...')
-          create_directory("#{config.entries_dir}/blog")
+          create_directory("#{settings.entries_dir}/blog")
           blog = extracted_data
-          write_json_to_file("#{config.entries_dir}/blog/blog_1.json", blog)
+          write_json_to_file("#{settings.entries_dir}/blog/blog_1.json", blog)
         end
 
         def extracted_data
@@ -60,15 +60,15 @@ module Contentful
         end
 
         def posts
-          Post.new(xml, config).post_extractor
+          Post.new(xml, settings).post_extractor
         end
 
         def categories
-          Category.new(xml, config).categories_extractor
+          Category.new(xml, settings).categories_extractor
         end
 
         def tags
-          Tag.new(xml, config).tags_extractor
+          Tag.new(xml, settings).tags_extractor
         end
 
         def id
