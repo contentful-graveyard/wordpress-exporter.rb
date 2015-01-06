@@ -76,7 +76,7 @@ module Contentful
         end
 
         def id
-          xml.at_xpath('//wp:base_blog_url').text.match(/http:\/\/(.+)/)[1].tr('.', '_')
+          xml.at_xpath('//wp:base_blog_url').text.match(/https?:\/\/(.+)/)[1].tr('.', '_')
         end
 
         def title
