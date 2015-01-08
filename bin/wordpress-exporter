@@ -15,5 +15,6 @@ Escort::App.create do |app|
         Command::CLI.new(options, arguments).execute
       end
     end
+
   end
 end

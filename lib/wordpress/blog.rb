@@ -55,7 +55,7 @@ module Contentful
 
         def extracted_data
           {
-              id: id,
+              id: 'blog_id',
               title: title,
               posts: link_entry(posts),
               categories: link_entry(categories),
@@ -73,10 +73,6 @@ module Contentful
 
         def tags
           Tag.new(xml, settings).tags_extractor
-        end
-
-        def id
-          xml.at_xpath('//wp:base_blog_url').text.match(/https?:\/\/(.+)/)[1].tr('.', '_')
         end
 
         def title
