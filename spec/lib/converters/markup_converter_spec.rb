@@ -27,9 +27,9 @@ module Contentful
       end
 
       it 'reverse_markdown' do
-        content = "<strong>Bold text</strong>, <em>italic text</em> <code> int a = 1 </code>\n<li>Nice</li>"
+        content = '<em>italic text</em> <strong>Bold text</strong> <code> int a = 1 </code>'
         result = @converter.reverse_markdown(content)
-        expect(result).to eq " **Bold text** , _italic text_ ` int a = 1 `- Nice\n"
+        expect(result).to eq '_italic text_ **Bold text** ` int a = 1 `'
       end
 
       it 'replace new line markup to <br>' do
