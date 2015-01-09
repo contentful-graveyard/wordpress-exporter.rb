@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'yaml'
-require_relative '../../lib/configuration'
 
 module Contentful
   describe Configuration do

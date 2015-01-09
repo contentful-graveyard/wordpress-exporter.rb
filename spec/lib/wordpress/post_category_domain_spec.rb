@@ -2,7 +2,6 @@ require 'spec_helper'
 require './lib/wordpress/post_category_domain'
 require './lib/wordpress/post'
 require './lib/wordpress/blog'
-require 'support/shared_configuration.rb'
 
 module Contentful
   module Exporter

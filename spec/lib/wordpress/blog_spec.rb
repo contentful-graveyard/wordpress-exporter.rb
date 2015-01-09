@@ -1,6 +1,5 @@
 require 'spec_helper'
 require './lib/wordpress/blog'
-require 'support/shared_configuration.rb'
 require './lib/wordpress/post'
 require './lib/wordpress/post_attachment'
 require './lib/wordpress/post_category_domain'

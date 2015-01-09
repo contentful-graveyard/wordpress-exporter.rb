@@ -35,19 +35,29 @@ Default contentful structure needed to import converted wordpress data is locate
 
 ## Step by step
 
-1. Export content of blog from Wordpress and save it as XML file.
-2. Create YMAL file with settings (eg. settings.yml)
-3. Setup required parameters in settings file:
+<br>1. Export content of blog from Wordpress and save it as XML file.
+<br>2. Create YMAL file with settings (eg. settings.yml)
+<br>3. Setup required parameters in settings file:
 
 ```yml
 data_dir: PATH_TO_ALL_DATA
 wordpress_xml_path: PATH_TO_XML_FILE
 ```
 
-4. Run command to extract data from XML file:
+<br>4. Run command to extract data from XML file:
 
 ```
 wordpress-exporter --config-file wordpress_settings/wordpress_settings.yml --extract-to-json
 ```
+<br>5.(Optional). There is possibility to convert **markup** embedded in posts content to **markdown**
 
-5. Use Contentful-importer to import data to Contentful platform.
+```
+wordpress-exporter --config-file wordpress_settings/wordpress_settings.yml --convert-markup
+```
+<br>6. Create files with content types structure. In directory ```wordpress_settings``` is attached ```default_contentful_strucuture.json``` file.
+Might be useful, because the structure of Wordpress is very static.
+
+```
+wordpress-exporter --config-file wordpress_settings/wordpress_settings.yml --create-contentful-model-from-json
+```
+<br>7. Use [Contentful-importer](https://github.com/contentful/generic-importer.rb) to import data to Contentful platform.
