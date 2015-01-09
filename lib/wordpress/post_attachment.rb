@@ -4,7 +4,6 @@ module Contentful
   module Exporter
     module Wordpress
       class PostAttachment < Post
-
         attr_reader :post, :settings
 
         def initialize(post, settings)
@@ -39,7 +38,6 @@ module Contentful
             end
           end
         end
-
       end
     end
   end

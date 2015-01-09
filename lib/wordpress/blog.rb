@@ -5,7 +5,6 @@ module Contentful
   module Exporter
     module Wordpress
       class Blog
-
         attr_reader :xml, :settings
 
         def initialize(xml_document, settings)
@@ -26,8 +25,8 @@ module Contentful
         end
 
         def link_asset(asset)
-            asset.keep_if { |key, _v| key if key == :id }
-            asset.merge!(type: 'File')
+          asset.keep_if { |key, _v| key if key == :id }
+          asset.merge!(type: 'File')
         end
 
         def create_directory(path)
@@ -55,7 +54,7 @@ module Contentful
 
         def extracted_data
           {
-              id: id,
+              id: 'blog_id',
               title: title,
               posts: link_entry(posts),
               categories: link_entry(categories),
@@ -75,14 +74,9 @@ module Contentful
           Tag.new(xml, settings).tags_extractor
         end
 
-        def id
-          xml.at_xpath('//wp:base_blog_url').text.match(/https?:\/\/(.+)/)[1].tr('.', '_')
-        end
-
         def title
           xml.at_xpath('//title').text
         end
-
       end
     end
   end

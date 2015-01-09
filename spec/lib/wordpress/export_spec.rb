@@ -1,7 +1,6 @@
 require 'spec_helper'
 require 'yaml'
-require_relative '../../../lib/wordpress/export'
-require_relative '../../support/shared_configuration.rb'
+require './lib/wordpress/export'
 
 module Contentful
   module Exporter

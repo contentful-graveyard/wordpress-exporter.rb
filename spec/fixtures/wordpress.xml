@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
+<rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
     <title>Moj blog 2</title>
     <link>http://szpryc.wordpress.com</link>
@@ -63,7 +65,8 @@
       <dc:creator>szpryc</dc:creator>
       <guid isPermaLink="false">http://szpryc.wordpress.com/?page_id=1</guid>
       <description/>
-      <content:encoded><![CDATA[This is an example of a page. Unlike posts, which are displayed on your blog’s front page in the order they’re published, pages are better suited for more timeless content that you want to be easily accessible, like your About or Contact information. Click the Edit link to make changes to this page or <a title="Direct link to Add New in the Admin Dashboard" href="/wp-admin/post-new.php?post_type=page">add another page</a>.]]></content:encoded>
+      <content:encoded>
+        <![CDATA[This is an example of a page. Unlike posts, which are displayed on your blog’s front page in the order they’re published, pages are better suited for more timeless content that you want to be easily accessible, like your About or Contact information. Click the Edit link to make changes to this page or <a title="Direct link to Add New in the Admin Dashboard" href="/wp-admin/post-new.php?post_type=page">add another page</a>.]]></content:encoded>
       <excerpt:encoded><![CDATA[]]></excerpt:encoded>
       <wp:post_id>1</wp:post_id>
       <wp:post_date>2014-11-26 11:49:06</wp:post_date>
@@ -171,7 +174,9 @@ Quisque sit amet feugiat dolor. Quisque porta dictum tellus sed faucibus. Donec 
         </wp:commentmeta>
         <wp:commentmeta>
           <wp:meta_key>akismet_history</wp:meta_key>
-          <wp:meta_value>a:4:{s:4:"time";d:1417002686.7098119258880615234375;s:7:"message";s:34:"Akismet przepuścił ten komentarz";s:5:"event";s:9:"check-ham";s:4:"user";s:6:"szpryc";}</wp:meta_value>
+          <wp:meta_value>a:4:{s:4:"time";d:1417002686.7098119258880615234375;s:7:"message";s:34:"Akismet przepuścił ten
+            komentarz";s:5:"event";s:9:"check-ham";s:4:"user";s:6:"szpryc";}
+          </wp:meta_value>
         </wp:commentmeta>
         <wp:commentmeta>
           <wp:meta_key>email_notification_notqueued</wp:meta_key>
@@ -201,7 +206,9 @@ Quisque sit amet feugiat dolor. Quisque porta dictum tellus sed faucibus. Donec 
         </wp:commentmeta>
         <wp:commentmeta>
           <wp:meta_key>akismet_history</wp:meta_key>
-          <wp:meta_value>a:4:{s:4:"time";d:1417002704.550846099853515625;s:7:"message";s:34:"Akismet przepuścił ten komentarz";s:5:"event";s:9:"check-ham";s:4:"user";s:6:"szpryc";}</wp:meta_value>
+          <wp:meta_value>a:4:{s:4:"time";d:1417002704.550846099853515625;s:7:"message";s:34:"Akismet przepuścił ten
+            komentarz";s:5:"event";s:9:"check-ham";s:4:"user";s:6:"szpryc";}
+          </wp:meta_value>
         </wp:commentmeta>
         <wp:commentmeta>
           <wp:meta_key>email_notification_notqueued</wp:meta_key>
@@ -231,7 +238,9 @@ Quisque sit amet feugiat dolor. Quisque porta dictum tellus sed faucibus. Donec 
         </wp:commentmeta>
         <wp:commentmeta>
           <wp:meta_key>akismet_history</wp:meta_key>
-          <wp:meta_value>a:4:{s:4:"time";d:1417002720.1313059329986572265625;s:7:"message";s:34:"Akismet przepuścił ten komentarz";s:5:"event";s:9:"check-ham";s:4:"user";s:6:"szpryc";}</wp:meta_value>
+          <wp:meta_value>a:4:{s:4:"time";d:1417002720.1313059329986572265625;s:7:"message";s:34:"Akismet przepuścił ten
+            komentarz";s:5:"event";s:9:"check-ham";s:4:"user";s:6:"szpryc";}
+          </wp:meta_value>
         </wp:commentmeta>
         <wp:commentmeta>
           <wp:meta_key>email_notification_notqueued</wp:meta_key>
@@ -328,7 +337,9 @@ Quisque sit amet feugiat dolor. Quisque porta dictum tellus sed faucibus. Donec 
         </wp:commentmeta>
         <wp:commentmeta>
           <wp:meta_key>akismet_history</wp:meta_key>
-          <wp:meta_value>a:4:{s:4:"time";d:1417002777.3234920501708984375;s:7:"message";s:34:"Akismet przepuścił ten komentarz";s:5:"event";s:9:"check-ham";s:4:"user";s:6:"szpryc";}</wp:meta_value>
+          <wp:meta_value>a:4:{s:4:"time";d:1417002777.3234920501708984375;s:7:"message";s:34:"Akismet przepuścił ten
+            komentarz";s:5:"event";s:9:"check-ham";s:4:"user";s:6:"szpryc";}
+          </wp:meta_value>
         </wp:commentmeta>
         <wp:commentmeta>
           <wp:meta_key>email_notification_notqueued</wp:meta_key>
@@ -358,7 +369,9 @@ Quisque sit amet feugiat dolor. Quisque porta dictum tellus sed faucibus. Donec 
         </wp:commentmeta>
         <wp:commentmeta>
           <wp:meta_key>akismet_history</wp:meta_key>
-          <wp:meta_value>a:4:{s:4:"time";d:1417002819.990191936492919921875;s:7:"message";s:34:"Akismet przepuścił ten komentarz";s:5:"event";s:9:"check-ham";s:4:"user";s:6:"szpryc";}</wp:meta_value>
+          <wp:meta_value>a:4:{s:4:"time";d:1417002819.990191936492919921875;s:7:"message";s:34:"Akismet przepuścił ten
+            komentarz";s:5:"event";s:9:"check-ham";s:4:"user";s:6:"szpryc";}
+          </wp:meta_value>
         </wp:commentmeta>
         <wp:commentmeta>
           <wp:meta_key>email_notification_notqueued</wp:meta_key>
@@ -502,7 +515,8 @@ Quisque sit amet feugiat dolor. Quisque porta dictum tellus sed faucibus. Donec 
       <link>http://szpryc.wordpress.com/2014/11/26/wpis-numer-dwa-2/screen-shot-2014-11-27-at-12-34-47-pm/#main</link>
       <pubDate>Thu, 27 Nov 2014 11:34:59 +0000</pubDate>
       <dc:creator>szpryc</dc:creator>
-      <guid isPermaLink="false">http://szpryc.files.wordpress.com/2014/11/screen-shot-2014-11-27-at-12-34-47-pm.png</guid>
+      <guid isPermaLink="false">http://szpryc.files.wordpress.com/2014/11/screen-shot-2014-11-27-at-12-34-47-pm.png
+      </guid>
       <description/>
       <content:encoded><![CDATA[opis opis]]></content:encoded>
       <excerpt:encoded><![CDATA[jakas etykieta]]></excerpt:encoded>
@@ -518,7 +532,8 @@ Quisque sit amet feugiat dolor. Quisque porta dictum tellus sed faucibus. Donec 
       <wp:post_type>attachment</wp:post_type>
       <wp:post_password/>
       <wp:is_sticky>0</wp:is_sticky>
-      <wp:attachment_url>https://szpryc.files.wordpress.com/2014/11/screen-shot-2014-11-27-at-12-34-47-pm.png</wp:attachment_url>
+      <wp:attachment_url>https://szpryc.files.wordpress.com/2014/11/screen-shot-2014-11-27-at-12-34-47-pm.png
+      </wp:attachment_url>
       <wp:postmeta>
         <wp:meta_key>_wp_attachment_image_alt</wp:meta_key>
         <wp:meta_value><![CDATA[MOJ_DESC]]></wp:meta_value>
@@ -529,7 +544,8 @@ Quisque sit amet feugiat dolor. Quisque porta dictum tellus sed faucibus. Donec 
       <link>http://szpryc.wordpress.com/2014/11/26/wpis-numer-dwa/screen-shot-2014-11-27-at-12-34-47-pm-2/#main</link>
       <pubDate>Thu, 27 Nov 2014 17:53:28 +0000</pubDate>
       <dc:creator>szpryc</dc:creator>
-      <guid isPermaLink="false">http://szpryc.files.wordpress.com/2014/11/screen-shot-2014-11-27-at-12-34-47-pm1.png</guid>
+      <guid isPermaLink="false">http://szpryc.files.wordpress.com/2014/11/screen-shot-2014-11-27-at-12-34-47-pm1.png
+      </guid>
       <description/>
       <content:encoded><![CDATA[]]></content:encoded>
       <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -545,7 +561,8 @@ Quisque sit amet feugiat dolor. Quisque porta dictum tellus sed faucibus. Donec 
       <wp:post_type>attachment</wp:post_type>
       <wp:post_password/>
       <wp:is_sticky>0</wp:is_sticky>
-      <wp:attachment_url>https://szpryc.files.wordpress.com/2014/11/screen-shot-2014-11-27-at-12-34-47-pm1.png</wp:attachment_url>
+      <wp:attachment_url>https://szpryc.files.wordpress.com/2014/11/screen-shot-2014-11-27-at-12-34-47-pm1.png
+      </wp:attachment_url>
     </item>
   </channel>
 </rss>

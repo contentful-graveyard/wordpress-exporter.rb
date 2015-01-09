@@ -4,7 +4,6 @@ module Contentful
   module Exporter
     module Wordpress
       class Post < Blog
-
         attr_reader :xml, :settings
 
         def initialize(xml, settings)
@@ -68,7 +67,7 @@ module Contentful
         def assign_content_elements_to_post(xml_post, post_entry)
           attachment = attachment(xml_post)
           tags = link_entry(tags(xml_post))
-          categories =link_entry(categories(xml_post))
+          categories = link_entry(categories(xml_post))
           post_entry.merge!(attachment: link_asset(attachment)) unless attachment.nil?
           post_entry.merge!(tags: tags) unless tags.empty?
           post_entry.merge!(categories: categories) unless categories.empty?
@@ -89,7 +88,6 @@ module Contentful
         def created_at(xml_post)
           xml_post.xpath('wp:post_date').text
         end
-
       end
     end
   end

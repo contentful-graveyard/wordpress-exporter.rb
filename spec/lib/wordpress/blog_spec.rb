@@ -1,6 +1,5 @@
 require 'spec_helper'
 require './lib/wordpress/blog'
-require 'support/shared_configuration.rb'
 require './lib/wordpress/post'
 require './lib/wordpress/post_attachment'
 require './lib/wordpress/post_category_domain'
@@ -51,7 +50,7 @@ module Contentful
         it 'valid blog entry' do
           blog = JSON.parse(File.read('spec/fixtures/blog/entries/blog/blog_1.json'))
           expect(blog.count).to eq 5
-          expect(blog['id']).to eq 'szpryc_wordpress_com'
+          expect(blog['id']).to eq 'blog_id'
           expect(blog['title']).to eq 'Moj blog 2'
           expect(blog['posts'].count).to eq 7
           expect(blog['posts'].first).to include('id' => 'post_1', 'type' => 'Entry')

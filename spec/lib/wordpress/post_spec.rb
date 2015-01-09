@@ -3,7 +3,6 @@ require './lib/wordpress/post'
 require './lib/wordpress/blog'
 require './lib/wordpress/post_attachment'
 require './lib/wordpress/post_category_domain'
-require 'support/shared_configuration.rb'
 
 module Contentful
   module Exporter
@@ -24,7 +23,7 @@ module Contentful
 
         it 'extract_data' do
           post_xml = @xml_doc.xpath('//item').to_a.first
-          post = @post.send(:extract_data,post_xml)
+          post = @post.send(:extract_data, post_xml)
           expect(post.count).to eq 5
           expect(post[:id]).to eq 'post_1'
           expect(post[:title]).to eq 'Informacje'

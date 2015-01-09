@@ -4,7 +4,6 @@ module Contentful
   module Exporter
     module Wordpress
       class Tag < Blog
-
         attr_reader :xml, :settings
 
         def initialize(xml, settings)
@@ -51,7 +50,6 @@ module Contentful
         def name(tag)
           tag.xpath('wp:tag_name').text
         end
-
       end
     end
   end

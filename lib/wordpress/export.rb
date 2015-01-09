@@ -14,7 +14,6 @@ module Contentful
   module Exporter
     module Wordpress
       class Export
-
         attr_reader :wordpress_xml, :settings
 
         def initialize(settings)
@@ -25,7 +24,6 @@ module Contentful
         def export_blog
           Blog.new(wordpress_xml, settings).blog_extractor
         end
-
       end
     end
   end

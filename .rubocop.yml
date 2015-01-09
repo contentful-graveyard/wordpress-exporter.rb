@@ -1,0 +1,31 @@
+AllCops:
+  Exclude:
+    - wordpress_exporter.gemspec
+    - bin/wordpress-exporter
+
+LineLength:
+  Max: 120
+Style/MethodLength:
+  Max: 10
+
+Style/SpaceInsideBrackets:
+  Enabled: false
+
+Style/CyclomaticComplexity:
+  Max: 8
+
+Style/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+  EnforcedStyleForEmptyBraces: no_space
+
+Style/CaseIndentation:
+  Enabled: false
+
+Lint/UselessAssignment:
+  Enabled: false
+
+Style/IndentationWidth:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
