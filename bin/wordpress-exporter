@@ -15,5 +15,25 @@ Escort::App.create do |app|
         Command::CLI.new(options, arguments).execute
       end
     end
+    app.command '--create-contentful-model-from-json' do |command|
+      command.summary 'Query data from Database'
+      command.action do |options, arguments|
+        Command::CLI.new(options, arguments).execute
+      end
+    end
+    app.command '--convert-content-model-to-json' do |command|
+      command.summary 'Convert dump file from Contentful model to import form. View README'
+      command.action do |options, arguments|
+        Command::CLI.new(options, arguments).execute
+      end
+    end
+
+    app.command '--convert-markup' do |command|
+      command.summary 'Convert markup to markdown in post content. View README'
+      command.action do |options, arguments|
+        Command::CLI.new(options, arguments).execute
+      end
+    end
+
   end
 end

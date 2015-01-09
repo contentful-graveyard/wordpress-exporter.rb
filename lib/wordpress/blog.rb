@@ -1,19 +1,19 @@
 require 'time'
-require 'escort'
+require 'logger'
 
 module Contentful
   module Exporter
     module Wordpress
-      class Blog < ::Escort::ActionCommand::Base
-        attr_reader :xml, :config
+      class Blog
+        attr_reader :xml, :settings
 
-        def initialize(xml_document, config)
+        def initialize(xml_document, settings)
           @xml = xml_document
-          @config = config
+          @settings = settings
         end
 
         def blog_extractor
-          create_directory(config.data_dir)
+          create_directory(settings.data_dir)
           extract_blog
         end
 
@@ -39,39 +39,39 @@ module Contentful
           end
         end
 
+        def output_logger
+          Logger.new(STDOUT)
+        end
+
         private
 
         def extract_blog
-          Escort::Logger.output.puts('Extracting blog data...')
-          create_directory("#{config.entries_dir}/blog")
+          output_logger.info('Extracting blog data...')
+          create_directory("#{settings.entries_dir}/blog")
           blog = extracted_data
-          write_json_to_file("#{config.entries_dir}/blog/blog_1.json", blog)
+          write_json_to_file("#{settings.entries_dir}/blog/blog_1.json", blog)
         end
 
         def extracted_data
           {
-            id: id,
-            title: title,
-            posts: link_entry(posts),
-            categories: link_entry(categories),
-            tags: link_entry(tags)
+              id: 'blog_id',
+              title: title,
+              posts: link_entry(posts),
+              categories: link_entry(categories),
+              tags: link_entry(tags)
           }
         end
 
         def posts
-          Post.new(xml, config).post_extractor
+          Post.new(xml, settings).post_extractor
         end
 
         def categories
-          Category.new(xml, config).categories_extractor
+          Category.new(xml, settings).categories_extractor
         end
 
         def tags
-          Tag.new(xml, config).tags_extractor
-        end
-
-        def id
-          xml.at_xpath('//wp:base_blog_url').text.match(/http:\/\/(.+)/)[1].tr('.', '_')
+          Tag.new(xml, settings).tags_extractor
         end
 
         def title

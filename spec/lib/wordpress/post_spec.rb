@@ -3,7 +3,6 @@ require './lib/wordpress/post'
 require './lib/wordpress/blog'
 require './lib/wordpress/post_attachment'
 require './lib/wordpress/post_category_domain'
-require 'support/shared_configuration.rb'
 
 module Contentful
   module Exporter
@@ -14,11 +13,11 @@ module Contentful
 
         before do
           @xml_doc = Nokogiri::XML(File.open('spec/fixtures/wordpress.xml'))
-          @post = Post.new(@xml_doc, @config)
+          @post = Post.new(@xml_doc, @settings)
         end
 
         it 'initialize' do
-          expect(@post.config).to be_kind_of Contentful::Configuration
+          expect(@post.settings).to be_kind_of Contentful::Configuration
           expect(@post.xml).to be_kind_of Nokogiri::XML::Document
         end
 

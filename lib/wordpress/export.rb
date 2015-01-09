@@ -14,20 +14,15 @@ module Contentful
   module Exporter
     module Wordpress
       class Export
-        attr_reader :wordpress_xml, :config
+        attr_reader :wordpress_xml, :settings
 
         def initialize(settings)
-          @config = settings
-          @wordpress_xml = wordpress_xml_document
+          @settings = settings
+          @wordpress_xml = Nokogiri::XML(File.open(settings.wordpress_xml))
         end
 
         def export_blog
-          Blog.new(wordpress_xml, config).blog_extractor
-        end
-
-        def wordpress_xml_document
-          fail ArgumentError, 'Set PATH to contentful structure JSON file. Check README' unless config.config['wordpress_xml_path']
-          Nokogiri::XML(File.open(config.config['wordpress_xml_path']))
+          Blog.new(wordpress_xml, settings).blog_extractor
         end
       end
     end

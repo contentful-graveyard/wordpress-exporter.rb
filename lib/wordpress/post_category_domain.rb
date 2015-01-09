@@ -4,16 +4,16 @@ module Contentful
   module Exporter
     module Wordpress
       class PostCategoryDomain < Post
-        attr_reader :post, :xml, :config
+        attr_reader :post, :xml, :settings
 
-        def initialize(xml, post, config)
+        def initialize(xml, post, settings)
           @xml = xml
           @post = post
-          @config = config
+          @settings = settings
         end
 
         def extract_tags
-          Escort::Logger.output.puts('Extracting post tags...')
+          output_logger.info 'Extracting post tags...'
           post_domains('category[domain=post_tag]').each_with_object([]) do |tag, tags|
             normalized_tag = normalized_data(tag, '//wp:tag')
             tags << normalized_tag unless normalized_tag.empty?
@@ -21,7 +21,7 @@ module Contentful
         end
 
         def extract_categories
-          Escort::Logger.output.puts('Extracting post categories...')
+          output_logger.info 'Extracting post categories...'
           post_domains('category[domain=category]').each_with_object([]) do |category, categories|
             normalized_categories = normalized_data(category, '//wp:category')
             categories << normalized_categories unless normalized_categories.empty?
@@ -55,7 +55,7 @@ module Contentful
         end
 
         def normalized_data(domain, path)
-          { id: domain_id(domain, path) }
+          {id: domain_id(domain, path)}
         end
 
         def prefix_id(domain_path)

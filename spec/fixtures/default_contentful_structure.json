@@ -1,0 +1,78 @@
+{
+  "Blog": {
+    "id": "blog",
+    "name": "Blog",
+    "description": null,
+    "displayField": "title",
+    "fields": {
+      "Posts": {
+        "id": "posts",
+        "type": "Array",
+        "link_type": "Entry",
+        "link": "Link"
+      },
+      "title": "Text",
+      "Categories": {
+        "id": "categories",
+        "type": "Array",
+        "link_type": "Entry",
+        "link": "Link"
+      },
+      "Tags": {
+        "id": "tags",
+        "type": "Array",
+        "link_type": "Entry",
+        "link": "Link"
+      }
+    }
+  },
+  "Tag": {
+    "id": "tag",
+    "name": "Tag",
+    "description": null,
+    "displayField": "nicename",
+    "fields": {
+      "nicename": "Text",
+      "name": "Text"
+    }
+  },
+  "Post": {
+    "id": "post",
+    "name": "Post",
+    "description": null,
+    "displayField": "title",
+    "fields": {
+      "title": "Text",
+      "content": "Text",
+      "Tags": {
+        "id": "tags",
+        "type": "Array",
+        "link_type": "Entry",
+        "link": "Link"
+      },
+      "Categories": {
+        "id": "categories",
+        "type": "Array",
+        "link_type": "Entry",
+        "link": "Link"
+      },
+      "wordpress_url": "Text",
+      "Attachment": {
+        "id": "attachment",
+        "type": "Asset",
+        "link": "Link"
+      },
+      "created_at": "Date"
+    }
+  },
+  "Category": {
+    "id": "category",
+    "name": "Category",
+    "description": null,
+    "displayField": "name",
+    "fields": {
+      "nicename": "Text",
+      "name": "Text"
+    }
+  }
+}

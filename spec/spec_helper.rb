@@ -1,5 +1,5 @@
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start 'rails'
 
 require 'bundler/setup'
 Bundler.setup
@@ -9,3 +9,5 @@ require 'rspec/its'
 require 'yaml'
 require 'json'
 require 'nokogiri'
+
+Dir[File.dirname(__FILE__) + '/support/*.rb'].each { |f| require f }

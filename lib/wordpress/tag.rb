@@ -4,14 +4,16 @@ module Contentful
   module Exporter
     module Wordpress
       class Tag < Blog
-        def initialize(xml, config)
+        attr_reader :xml, :settings
+
+        def initialize(xml, settings)
           @xml = xml
-          @config = config
+          @settings = settings
         end
 
         def tags_extractor
-          puts 'Extracting blog tags...'
-          create_directory("#{config.entries_dir}/tag")
+          output_logger.info 'Extracting blog tags...'
+          create_directory("#{settings.entries_dir}/tag")
           extract_tags
         end
 
@@ -20,16 +22,16 @@ module Contentful
         def extract_tags
           tags.each_with_object([]) do |tag, tags|
             normalized_tag = extracted_data(tag)
-            write_json_to_file("#{config.entries_dir}/tag/#{id(tag)}.json", normalized_tag)
+            write_json_to_file("#{settings.entries_dir}/tag/#{id(tag)}.json", normalized_tag)
             tags << normalized_tag
           end
         end
 
         def extracted_data(tag)
           {
-            id: id(tag),
-            nicename: slug(tag),
-            name: name(tag)
+              id: id(tag),
+              nicename: slug(tag),
+              name: name(tag)
           }
         end
 

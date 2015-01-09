@@ -2,7 +2,6 @@ require 'spec_helper'
 require './lib/wordpress/post_category_domain'
 require './lib/wordpress/post'
 require './lib/wordpress/blog'
-require 'support/shared_configuration.rb'
 
 module Contentful
   module Exporter
@@ -14,11 +13,11 @@ module Contentful
         before do
           xml_doc = Nokogiri::XML(File.open('spec/fixtures/wordpress.xml'))
           post = xml_doc.xpath('//item').to_a[4]
-          @pc_domain = PostCategoryDomain.new(xml_doc, post, @config)
+          @pc_domain = PostCategoryDomain.new(xml_doc, post, @settings)
         end
 
         it 'initialize' do
-          expect(@pc_domain.config).to be_kind_of Contentful::Configuration
+          expect(@pc_domain.settings).to be_kind_of Contentful::Configuration
           expect(@pc_domain.xml).to be_kind_of Nokogiri::XML::Document
         end
 

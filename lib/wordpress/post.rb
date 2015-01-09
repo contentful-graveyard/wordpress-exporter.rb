@@ -4,16 +4,16 @@ module Contentful
   module Exporter
     module Wordpress
       class Post < Blog
-        attr_reader :xml, :config
+        attr_reader :xml, :settings
 
-        def initialize(xml, config)
+        def initialize(xml, settings)
           @xml = xml
-          @config = config
+          @settings = settings
         end
 
         def post_extractor
-          Escort::Logger.output.puts('Extracting posts...')
-          create_directory("#{config.entries_dir}/post")
+          output_logger.info 'Extracting posts...'
+          create_directory("#{settings.entries_dir}/post")
           extract_posts
         end
 
@@ -26,7 +26,7 @@ module Contentful
         def extract_posts
           posts.each_with_object([]) do |post_xml, posts|
             normalized_post = extract_data(post_xml)
-            write_json_to_file("#{config.entries_dir}/post/#{post_id(post_xml)}.json", normalized_post)
+            write_json_to_file("#{settings.entries_dir}/post/#{post_id(post_xml)}.json", normalized_post)
             posts << normalized_post
           end
         end
@@ -42,25 +42,25 @@ module Contentful
         end
 
         def attachment(xml_post)
-          PostAttachment.new(xml_post, config).attachment_extractor
+          PostAttachment.new(xml_post, settings).attachment_extractor
         end
 
         def tags(xml_post)
-          PostCategoryDomain.new(xml, xml_post, config).extract_tags
+          PostCategoryDomain.new(xml, xml_post, settings).extract_tags
         end
 
         def categories(xml_post)
-          PostCategoryDomain.new(xml, xml_post, config).extract_categories
+          PostCategoryDomain.new(xml, xml_post, settings).extract_categories
         end
 
         def basic_post_data(xml_post)
           created = Date.strptime(created_at(xml_post))
           {
-            id: post_id(xml_post),
-            title: title(xml_post),
-            wordpress_url: url(xml_post),
-            content: content(xml_post),
-            created_at: created
+              id: post_id(xml_post),
+              title: title(xml_post),
+              wordpress_url: url(xml_post),
+              content: content(xml_post),
+              created_at: created
           }
         end
 
