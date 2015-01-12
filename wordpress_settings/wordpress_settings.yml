@@ -8,6 +8,6 @@ wordpress_xml_path: wordpress_settings/export_wordpress.xml
 
 ## CONVERT CONTENTFUL MODEL TO CONTENTFUL IMPORT STRUCTURE
 content_model_json: wordpress_settings/contentful_model.json
-import_form_dir: wordpress_settings/contentful_structure.json
+converted_form_dir: wordpress_settings/contentful_structure.json
 
 contentful_structure_dir: wordpress_settings/default_contentful_structure.json

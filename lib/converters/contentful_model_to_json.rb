@@ -1,28 +1,31 @@
-require_relative 'creator_content_types_json_files'
+require_relative 'content_types_structure_creator'
 
 module Contentful
   module Converter
     class ContentfulModelToJson
 
-      attr_reader :config
+      attr_reader :config, :logger
+
+      FIELD_TYPE = %w( Link Array )
 
       def initialize(settings)
         @config = settings
+        @logger = Logger.new(STDOUT)
       end
 
       def create_content_type_json
-        puts 'Create JSON files with content types structure...'
+        logger.info 'Create JSON files with content types structure...'
         config.contentful_structure.each do |content_type, values|
           content_type_name = content_type_name(content_type)
           create_directory(config.collections_dir)
-          CreatorContentTypesJsonFiles.new(config).create_content_type_json_file(content_type_name, values)
+          ContentTypesStructureCreator.new(config).create_content_type_json_file(content_type_name, values)
         end
-        puts 'Done!'
+        logger.info 'Done!'
       end
 
       def convert_to_import_form
-        puts 'Converting Contentful model to Contentful import structure...'
-        File.open(config.import_form_dir, 'w') { |file| file.write({}) }
+        logger.info 'Converting Contentful model to Contentful import structure...'
+        File.open(config.converted_structure_dir, 'w') { |file| file.write({}) }
         contentful_file = JSON.parse(File.read(config.content_types))['items']
         contentful_file.each do |content_type|
           parsed_content_type = {
@@ -32,10 +35,12 @@ module Contentful
               displayField: content_type['displayField'],
               fields: {}.merge!(create_contentful_fields(content_type))
           }
-          import_form = JSON.parse(File.read(config.import_form_dir))
-          File.open(config.import_form_dir, 'w') { |file| file.write(JSON.pretty_generate(import_form.merge!(content_type['name'] => parsed_content_type))) }
+          import_form = JSON.parse(File.read(config.converted_structure_dir))
+          File.open(config.converted_structure_dir, 'w') do |file|
+            file.write(JSON.pretty_generate(import_form.merge!(content_type['name'] => parsed_content_type)))
+          end
         end
-        puts "Done! Contentful import structure file saved in #{config.import_form_dir}"
+        logger.info "Done! Contentful import structure file saved in #{config.converted_structure_dir}"
       end
 
       def create_contentful_fields(content_type)
@@ -53,7 +58,7 @@ module Contentful
       end
 
       def link_id(field)
-        if %w( Link Array ).include? field['type']
+        if FIELD_TYPE.include? field['type']
           field['name'].capitalize
         else
           field['id']
@@ -67,7 +72,6 @@ module Contentful
       def create_directory(path)
         FileUtils.mkdir_p(path) unless File.directory?(path)
       end
-
     end
   end
 end

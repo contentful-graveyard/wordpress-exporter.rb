@@ -1,11 +1,12 @@
 module Contentful
   module Converter
-    class CreatorContentTypesJsonFiles
+    class ContentTypesStructureCreator
 
-      attr_reader :config
+      attr_reader :config, :logger
 
       def initialize(config)
         @config = config
+        @logger = Logger.new(STDOUT)
       end
 
       def create_content_type_json_file(content_type_name, values)
@@ -17,7 +18,7 @@ module Contentful
             fields: create_fields(values[:fields])
         }
         write_json_to_file("#{config.collections_dir}/#{content_type_name}.json", collection)
-        puts "Saving #{content_type_name}.json to #{config.collections_dir}"
+        logger.info "Saving #{content_type_name}.json to #{config.collections_dir}"
       end
 
       def create_fields(fields)

@@ -22,17 +22,8 @@ module Contentful
 
       def convert_post_content(post_file_path)
         post_data = JSON.parse(File.read(post_file_path))
-        converted_content = reverse_markdown(post_data['content'])
-        post_data['content'] = replace_new_line_markup(converted_content)
+        post_data['content'] = ReverseMarkdown.convert post_data['content']
         overwrite_file(post_file_path, post_data)
-      end
-
-      def reverse_markdown(content)
-        ReverseMarkdown.convert content
-      end
-
-      def replace_new_line_markup(converted_content)
-        converted_content.gsub("\n", "<br>")
       end
 
       def overwrite_file(path, data)
@@ -40,7 +31,6 @@ module Contentful
           file.write(JSON.pretty_generate(data))
         end
       end
-
     end
   end
 end
