@@ -38,34 +38,34 @@ Default contentful structure needed to import converted wordpress data is locate
 1. Export content of blog from Wordpress and save it as XML file.
 2. Create YAML file with settings (eg. settings.yml)
 3. Setup required parameters in settings file:
--
-```yml
-data_dir: PATH_TO_ALL_DATA
-wordpress_xml_path: PATH_TO_XML_FILE
-```
-All generated data like ```content types```, ```entries```, ```assets``` will be saved at ```data_dir``` path.
+    
+    ```yml
+    data_dir: PATH_TO_ALL_DATA
+    wordpress_xml_path: PATH_TO_XML_FILE
+    ```
+    All generated data like ```content types```, ```entries```, ```assets``` will be saved at ```data_dir``` path.
 
 4. Run command to extract data from XML file:
--
-```
-wordpress-exporter --config-file wordpress_settings/wordpress_settings.yml --extract-to-json
-```
-It will extract data from XML file and save as JSON files.
+    
+    ```
+    wordpress-exporter --config-file wordpress_settings/wordpress_settings.yml --extract-to-json
+    ```
+    It will extract data from XML file and save as JSON files.
 
 5. (Optional). There is possibility to convert **markup** embedded in posts content to **markdown**
--
-```
-wordpress-exporter --config-file wordpress_settings/wordpress_settings.yml --convert-markup
-```
-Only post's content will be modified. Other attributes do not change.
+    
+    ```
+    wordpress-exporter --config-file wordpress_settings/wordpress_settings.yml --convert-markup
+    ```
+    Only post's content will be modified. Other attributes do not change.
 
 6. Create files with content types structure. In directory ```wordpress_settings``` is attached ```default_contentful_strucuture.json``` file.
-Might be useful, because the structure of Wordpress is very static.
--
-```
-wordpress-exporter --config-file wordpress_settings/wordpress_settings.yml --create-contentful-model-from-json
-```
+    Might be useful, because the structure of Wordpress is very static.
+    
+    ```
+    wordpress-exporter --config-file wordpress_settings/wordpress_settings.yml --create-contentful-model-from-json
+    ```
 
     Files with the content type structure will be saved at ```data_dir/collections```.
 
-7. Use [Contentful-importer](https://github.com/contentful/generic-importer.rb) to import data to Contentful platform.
+7. Use [Contentful-importer](https://github.com/contentful/generic-importer.rb) to import data to Contentful     platform.
