@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'yaml'
-require_relative '../../lib/configuration'
 
 module Contentful
   describe Configuration do
@@ -10,6 +9,7 @@ module Contentful
       yaml_text = <<-EOF
       data_dir: path_to_data_dir
       wordpress_xml_path: path_to_xml_file.xml
+      contentful_structure_dir: spec/fixtures/default_contentful_structure.json
       EOF
 
       yaml = YAML.load(yaml_text)

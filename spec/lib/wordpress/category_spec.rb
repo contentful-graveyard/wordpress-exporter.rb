@@ -1,7 +1,6 @@
 require 'spec_helper'
 require './lib/wordpress/category'
 require './lib/wordpress/blog'
-require 'support/shared_configuration.rb'
 
 module Contentful
   module Exporter

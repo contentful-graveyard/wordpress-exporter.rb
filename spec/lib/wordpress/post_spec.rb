@@ -3,7 +3,6 @@ require './lib/wordpress/post'
 require './lib/wordpress/blog'
 require './lib/wordpress/post_attachment'
 require './lib/wordpress/post_category_domain'
-require 'support/shared_configuration.rb'
 
 module Contentful
   module Exporter

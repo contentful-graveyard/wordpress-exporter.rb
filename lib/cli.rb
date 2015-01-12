@@ -6,8 +6,9 @@ module Command
 
     def execute
       setting_file = YAML.load_file(global_options[:file])
-      Migrator.run(setting_file)
+      Migrator.new(setting_file).run(command_name)
     end
 
   end
 end
+
