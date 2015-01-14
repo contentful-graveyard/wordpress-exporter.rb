@@ -9,7 +9,7 @@ module Contentful
                 :wordpress_xml,
                 :settings,
                 :contentful_structure,
-                :converted_structure_dir,
+                :converted_model_dir,
                 :content_types
 
     def initialize(settings)
@@ -22,7 +22,7 @@ module Contentful
       @assets_dir = "#{data_dir}/assets"
       @space_id = settings['space_id']
       @contentful_structure = load_contentful_structure_file
-      @converted_structure_dir = settings['converted_form_dir']
+      @converted_model_dir = settings['converted_model_dir']
       @content_types = settings['content_model_json']
     end
 

@@ -25,7 +25,7 @@ module Contentful
 
       def convert_to_import_form
         logger.info 'Converting Contentful model to Contentful import structure...'
-        File.open(config.converted_structure_dir, 'w') { |file| file.write({}) }
+        File.open(config.converted_model_dir, 'w') { |file| file.write({}) }
         contentful_file = JSON.parse(File.read(config.content_types))['items']
         contentful_file.each do |content_type|
           parsed_content_type = {
@@ -35,12 +35,12 @@ module Contentful
               displayField: content_type['displayField'],
               fields: {}.merge!(create_contentful_fields(content_type))
           }
-          import_form = JSON.parse(File.read(config.converted_structure_dir))
-          File.open(config.converted_structure_dir, 'w') do |file|
+          import_form = JSON.parse(File.read(config.converted_model_dir))
+          File.open(config.converted_model_dir, 'w') do |file|
             file.write(JSON.pretty_generate(import_form.merge!(content_type['name'] => parsed_content_type)))
           end
         end
-        logger.info "Done! Contentful import structure file saved in #{config.converted_structure_dir}"
+        logger.info "Done! Contentful import structure file saved in #{config.converted_model_dir}"
       end
 
       def create_contentful_fields(content_type)
