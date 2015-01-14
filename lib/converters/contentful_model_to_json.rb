@@ -3,7 +3,7 @@ require_relative 'content_types_structure_creator'
 module Contentful
   module Converter
     class ContentfulModelToJson
-      attr_reader :config, :logger, :converted_model_dir, :content_types
+      attr_reader :config, :logger, :converted_model_dir, :content_types, :omit_content_model
 
       FIELD_TYPE = %w( Link Array )
 
@@ -12,7 +12,8 @@ module Contentful
         @logger = Logger.new(STDOUT)
       end
 
-      def create_content_type_json
+      def create_content_type_json(omit_content_model_flag = true)
+        @omit_content_model = omit_content_model_flag
         contentful_structure = load_contentful_structure_file
         logger.info 'Create JSON files with content types structure...'
         contentful_structure.each do |content_type, values|
@@ -77,12 +78,16 @@ module Contentful
       # If contentful_structure JSON file exists, it will load the file. If not, it will automatically create an empty file.
       # This file is required to convert contentful model to contentful import structure.
       def load_contentful_structure_file
-        fail ArgumentError, 'Set PATH for contentful structure JSON file. View README' if config.settings['contentful_structure_dir'].nil?
+        fail ArgumentError, 'Set PATH for contentful structure JSON file. View README' if omit_content_model?
         file_exists? ? load_existing_contentful_structure_file : create_empty_contentful_structure_file
       end
 
+      def omit_content_model?
+        omit_content_model == true ? config.settings['contentful_structure_dir'].nil? : false
+      end
+
       def file_exists?
-        File.exists?(config.settings['contentful_structure_dir'])
+        omit_content_model == false ? true : File.exists?(config.settings['contentful_structure_dir'])
       end
 
       def create_empty_contentful_structure_file
@@ -91,7 +96,11 @@ module Contentful
       end
 
       def load_existing_contentful_structure_file
-        JSON.parse(File.read(config.settings['contentful_structure_dir']), symbolize_names: true).with_indifferent_access
+        if omit_content_model == true
+          JSON.parse(File.read(config.settings['contentful_structure_dir']), symbolize_names: true).with_indifferent_access
+        else
+          JSON.parse(File.read("#{$gem_root}/wordpress_settings/default_contentful_structure.json"), symbolize_names: true).with_indifferent_access
+        end
       end
 
       def set_content_model_parameters

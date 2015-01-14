@@ -14,10 +14,12 @@ class Migrator
     @markup_converter = Contentful::Converter::MarkupConverter.new(@settings)
   end
 
-  def run(action)
+  def run(action, opts = {})
     case action.to_s
       when '--extract-to-json'
         exporter.export_blog
+        omit_flag = opts[:omit_content_model].present?
+        converter.create_content_type_json(omit_flag) unless omit_flag
       when '--convert-content-model-to-json'
         converter.convert_to_import_form
       when '--create-contentful-model-from-json'
@@ -26,5 +28,4 @@ class Migrator
         markup_converter.convert_markup_to_markdown
     end
   end
-
 end

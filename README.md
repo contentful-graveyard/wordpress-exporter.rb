@@ -45,12 +45,19 @@ Default contentful structure needed to import converted wordpress data is locate
     ```
     All generated data like ```content types```, ```entries```, ```assets``` will be saved at ```data_dir``` path.
 
-4. Run command to extract data from XML file:
+4. Run command to extract data from XML file and generate default structure of content types :
     
     ```
     wordpress-exporter --config-file wordpress_settings/wordpress_settings.yml --extract-to-json
     ```
     It will extract data from XML file and save as JSON files.
+
+    To skip the creation of the default content type structure add an additional argument ```--omit-content-model```
+
+    ```
+    wordpress-exporter --config-file wordpress_settings/wordpress_settings.yml --extract-to-json --omit-content-model
+    ```
+    It will extract only data from XML file.
 
 5. (Optional). There is possibility to convert **markup** embedded in posts content to **markdown**
     
