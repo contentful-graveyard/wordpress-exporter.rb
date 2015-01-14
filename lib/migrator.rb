@@ -16,12 +16,12 @@ class Migrator
 
   def run(action)
     case action.to_s
-      when '--create-contentful-model-from-json'
-        converter.create_content_type_json
       when '--extract-to-json'
         exporter.export_blog
       when '--convert-content-model-to-json'
         converter.convert_to_import_form
+      when '--create-contentful-model-from-json'
+        converter.create_content_type_json
       when '--convert-markup'
         markup_converter.convert_markup_to_markdown
     end
