@@ -10,4 +10,4 @@ wordpress_xml_path: wordpress_settings/wordpress.xml
 content_model_json: wordpress_settings/contentful_model.json
 converted_model_dir: wordpress_settings/contentful_structure.json
 
-contentful_model_dir: wordpress_settings/default_contentful_structure.json
+contentful_structure_dir: wordpress_settings/default_contentful_structure.json

@@ -3,6 +3,12 @@
 require 'escort'
 require_relative '../lib/cli'
 
+I18n.enforce_available_locales = false
+
+
+fail ArgumentError, 'Set path for configuration file and define action. More details you can find in README.' if ARGF.argv.empty?
+fail ArgumentError, "Missing '--config-file' argument. The correct is form: 'wordpress-adapter --config-file PATH_TO_CONFIGURATION_FILE --action'. View README." unless ARGV.include?('--config-file')
+
 Escort::App.create do |app|
   app.summary 'Executable file of Wordpress exporter'
 
@@ -11,6 +17,9 @@ Escort::App.create do |app|
 
     app.command '--extract-to-json' do |command|
       command.summary 'Extract data from Wordpress XML dump file and save as JSON files'
+      command.options do |opts|
+        opts.opt :omit_content_model, 'omit', short: '-o', long: '--omit-content-model', type: :boolean, default: false
+      end
       command.action do |options, arguments|
         Command::CLI.new(options, arguments).execute
       end
@@ -34,6 +43,5 @@ Escort::App.create do |app|
         Command::CLI.new(options, arguments).execute
       end
     end
-
   end
 end

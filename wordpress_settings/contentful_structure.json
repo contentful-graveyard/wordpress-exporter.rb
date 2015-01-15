@@ -1,0 +1,78 @@
+{
+  "Blog": {
+    "id": "3gldgGyAyci8ak0cykKeou",
+    "name": "Blog",
+    "description": null,
+    "displayField": "title",
+    "fields": {
+      "Posts": {
+        "id": "posts",
+        "type": "Array",
+        "link_type": "Entry",
+        "link": "Link"
+      },
+      "title": "Text",
+      "Categories": {
+        "id": "categories",
+        "type": "Array",
+        "link_type": "Entry",
+        "link": "Link"
+      },
+      "Tags": {
+        "id": "tags",
+        "type": "Array",
+        "link_type": "Entry",
+        "link": "Link"
+      }
+    }
+  },
+  "Tag": {
+    "id": "wO1krKenNQcWMSqaeysWo",
+    "name": "Tag",
+    "description": null,
+    "displayField": "nicename",
+    "fields": {
+      "nicename": "Text",
+      "name": "Text"
+    }
+  },
+  "Category": {
+    "id": "5PIooPqWmAcYyQ04c2KUcQ",
+    "name": "Category",
+    "description": null,
+    "displayField": "name",
+    "fields": {
+      "nicename": "Text",
+      "name": "Text"
+    }
+  },
+  "Post": {
+    "id": "KHqITFZXeCIokyOEc4k0k",
+    "name": "Post",
+    "description": null,
+    "displayField": "title",
+    "fields": {
+      "title": "Text",
+      "content": "Text",
+      "Tags": {
+        "id": "tags",
+        "type": "Array",
+        "link_type": "Entry",
+        "link": "Link"
+      },
+      "Categories": {
+        "id": "categories",
+        "type": "Array",
+        "link_type": "Entry",
+        "link": "Link"
+      },
+      "wordpress_url": "Text",
+      "Attachment": {
+        "id": "attachment",
+        "type": "Asset",
+        "link": "Link"
+      },
+      "created_at": "Date"
+    }
+  }
+}
