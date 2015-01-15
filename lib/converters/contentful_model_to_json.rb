@@ -99,7 +99,8 @@ module Contentful
         if omit_content_model == true
           JSON.parse(File.read(config.settings['contentful_structure_dir']), symbolize_names: true).with_indifferent_access
         else
-          JSON.parse(File.read("#{$gem_root}/wordpress_settings/default_contentful_structure.json"), symbolize_names: true).with_indifferent_access
+          spec = Gem::Specification.find_by_name('wordpress-exporter')
+          JSON.parse(File.read("#{spec.gem_dir}/wordpress_settings/default_contentful_structure.json"), symbolize_names: true).with_indifferent_access
         end
       end
 
