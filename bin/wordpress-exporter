@@ -8,6 +8,7 @@ spec = Gem::Specification.find_by_name('wordpress-exporter')
 $gem_root = spec.gem_dir
 
 fail ArgumentError, 'Set path for configuration file and define action. More details you can find in README.' if ARGF.argv.empty?
+fail ArgumentError, "Missing '--config-file' argument. The correct is form: 'wordpress-adapter --config-file PATH_TO_CONFIGURATION_FILE --action'. View README." unless ARGV.include?('--config-file')
 
 Escort::App.create do |app|
   app.summary 'Executable file of Wordpress exporter'
