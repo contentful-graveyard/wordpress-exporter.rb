@@ -4,7 +4,6 @@ require_relative 'converters/contentful_model_to_json'
 require_relative 'converters/markup_converter'
 
 class Migrator
-
   attr_reader :exporter, :settings, :converter, :markup_converter
 
   def initialize(settings)

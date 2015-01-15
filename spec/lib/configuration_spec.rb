@@ -3,9 +3,7 @@ require 'yaml'
 
 module Contentful
   describe Configuration do
-
     it 'initialize' do
-
       yaml_text = <<-EOF
       data_dir: path_to_data_dir
       wordpress_xml_path: path_to_xml_file.xml
@@ -21,6 +19,5 @@ module Contentful
       expect(configuration.entries_dir).to eq 'path_to_data_dir/entries'
       expect(configuration.wordpress_xml).to eq 'path_to_xml_file.xml'
     end
-
   end
 end

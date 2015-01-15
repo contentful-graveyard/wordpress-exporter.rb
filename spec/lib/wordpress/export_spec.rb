@@ -6,7 +6,6 @@ module Contentful
   module Exporter
     module Wordpress
       describe Export do
-
         include_context 'shared_configuration'
 
         before do
@@ -22,7 +21,6 @@ module Contentful
           @exporter.export_blog
           expect(Dir.glob('spec/fixtures/blog/**/*').count).to eq 23
         end
-
       end
     end
   end

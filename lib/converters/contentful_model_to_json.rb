@@ -31,11 +31,11 @@ module Contentful
         contentful_file = JSON.parse(File.read(content_types))['items']
         contentful_file.each do |content_type|
           parsed_content_type = {
-              id: content_type['sys']['id'],
-              name: content_type['name'],
-              description: content_type['description'],
-              displayField: content_type['displayField'],
-              fields: {}.merge!(create_contentful_fields(content_type))
+            id: content_type['sys']['id'],
+            name: content_type['name'],
+            description: content_type['description'],
+            displayField: content_type['displayField'],
+            fields: {}.merge!(create_contentful_fields(content_type))
           }
           import_form = JSON.parse(File.read(converted_model_dir))
           File.open(converted_model_dir, 'w') do |file|
@@ -50,9 +50,9 @@ module Contentful
           id = link_id(field)
           results[id] = case field['type']
                           when 'Link'
-                            {id: field['id'], type: field['linkType'], link: 'Link'}
+                            { id: field['id'], type: field['linkType'], link: 'Link' }
                           when 'Array'
-                            {id: field['id'], type: field['type'], link_type: field['items']['linkType'], link: field['items']['type']}
+                            { id: field['id'], type: field['type'], link_type: field['items']['linkType'], link: field['items']['type'] }
                           else
                             field['type']
                         end
@@ -87,7 +87,7 @@ module Contentful
       end
 
       def file_exists?
-        omit_content_model == false ? true : File.exists?(config.settings['contentful_structure_dir'])
+        omit_content_model == false ? true : File.exist?(config.settings['contentful_structure_dir'])
       end
 
       def create_empty_contentful_structure_file

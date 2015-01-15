@@ -6,7 +6,6 @@ module Contentful
   module Exporter
     module Wordpress
       describe Category do
-
         include_context 'shared_configuration'
 
         before do
@@ -34,7 +33,6 @@ module Contentful
           expect(category.count).to eq 3
           expect(category).to include(id: 'category_14786', nicename: 'bez-kategorii', name: 'Bez kategorii')
         end
-
       end
     end
   end

@@ -3,7 +3,6 @@ require 'reverse_markdown'
 module Contentful
   module Converter
     class MarkupConverter
-
       Encoding.default_external = 'utf-8'
 
       attr_reader :config, :logger

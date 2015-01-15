@@ -7,7 +7,6 @@ module Contentful
   module Exporter
     module Wordpress
       describe PostCategoryDomain do
-
         include_context 'shared_configuration'
 
         before do
@@ -36,7 +35,6 @@ module Contentful
           expect(categories.first).to include(id: 'category_2214351')
           expect(categories.last).to include(id: 'category_11599757')
         end
-
       end
     end
   end

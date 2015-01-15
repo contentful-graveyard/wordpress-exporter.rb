@@ -5,7 +5,6 @@ require_relative '../lib/cli'
 
 I18n.enforce_available_locales = false
 
-
 fail ArgumentError, 'Set path for configuration file and define action. More details you can find in README.' if ARGF.argv.empty?
 fail ArgumentError, "Missing '--config-file' argument. The correct is form: 'wordpress-adapter --config-file PATH_TO_CONFIGURATION_FILE --action'. View README." unless ARGV.include?('--config-file')
 

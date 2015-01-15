@@ -6,7 +6,6 @@ module Contentful
   module Exporter
     module Wordpress
       describe Tag do
-
         include_context 'shared_configuration'
 
         before do
@@ -34,7 +33,6 @@ module Contentful
           expect(tag.count).to eq 3
           expect(tag).to include(id: 'tag_2656354', nicename: 'testowy', name: 'testowy')
         end
-
       end
     end
   end

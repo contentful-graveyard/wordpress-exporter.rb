@@ -5,7 +5,6 @@ require 'logger'
 module Contentful
   module Converter
     describe MarkupConverter do
-
       include_context 'shared_configuration'
 
       before do
@@ -20,10 +19,9 @@ module Contentful
       it 'convert post content' do
         allow(File).to receive(:open)
         allow(File).to receive(:read).with('post_file_path')
-        allow(JSON).to receive(:parse) { {'content' => '<strong>TEST</strong>'} }
+        allow(JSON).to receive(:parse) { { 'content' => '<strong>TEST</strong>' } }
         @converter.convert_post_content('post_file_path')
       end
-
     end
   end
 end

@@ -1,6 +1,6 @@
 require_relative '../../lib/configuration'
 
-RSpec.shared_context 'shared_configuration', :a => :b do
+RSpec.shared_context 'shared_configuration', a: :b do
   before do
     yaml_text = <<-EOF
           data_dir: spec/fixtures/blog
