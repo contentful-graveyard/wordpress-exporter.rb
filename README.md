@@ -14,8 +14,8 @@ The following will be extracted:
 ## Setup
 To extract the blog content you need to [export](http://en.support.wordpress.com/export/) it from the Wordpress blog and save it as a XML file.
 
-Further you need to define where the tool can find the XML file and the destination of the transformed data.
-Create a `settings.yml` file and specify `data_dir` and `wordpress_xml_path`, eg:
+Further you need to define where the tool can find the XML file and the destination of the transformed content.
+Create a `settings.yml` file and specify `data_dir` and `wordpress_xml_path`:
 
 ``` yaml
 data_dir: PATH_TO_ALL_DATA
@@ -28,51 +28,41 @@ To extract the content run:
 wordpress-exporter --config-file settings.yml --extract-to-json
 ```
 
-The result will be a directory structure with the Wordpress content transformed into JSON files that are ready to be imported.
+The result will be a directory structure with the WordPress content transformed to JSON files that are ready for import.
 
-Use the [generic-importer](https://github.com/contentful/generic-importer.rb) import the content to Contentful.
-Default contentful structure needed to import converted wordpress data is located in the folder ``` wordpress_settings/default_contentful_structure.json ```.
+Use the [generic-importer](https://github.com/contentful/generic-importer.rb) to import the content to Contentful.
+The content model needed for the import is located in the folder ```default_contentful_structure.json```.
 
 ## Step by step
 
-1. Export content of blog from Wordpress and save it as XML file.
-2. Create YAML file with settings (eg. settings.yml)
-3. Setup required parameters in settings file:
-    
+1. Export the content of the blog from WordPress and save it as XML file.
+2. Create YAML file with settings (eg. settings.yml) and fill in the required parameters:
+
     ```yml
     data_dir: PATH_TO_ALL_DATA
     wordpress_xml_path: PATH_TO_XML_FILE
     ```
-    All generated data like ```content types```, ```entries```, ```assets``` will be saved at ```data_dir``` path.
+    All generated data like ```content types```, ```entries``` and ```assets``` will be saved to the ```data_dir```.
 
-4. Run command to extract data from XML file and generate default structure of content types :
-    
-    ```
-    wordpress-exporter --config-file wordpress_settings/wordpress_settings.yml --extract-to-json
-    ```
-    It will extract data from XML file and save as JSON files.
-
-    To skip the creation of the default content type structure add an additional argument ```--omit-content-model```
+3. Extract the content from the XML file and generate the content model and JSON files for the import:
 
     ```
-    wordpress-exporter --config-file wordpress_settings/wordpress_settings.yml --extract-to-json --omit-content-model
+    wordpress-exporter --config-file settings.yml --extract-to-json
     ```
-    It will extract only data from XML file.
+    If you want to create a different content model for your blog you can use ```--omit-content-model```
 
-5. (Optional). There is possibility to convert **markup** embedded in posts content to **markdown**
-    
     ```
-    wordpress-exporter --config-file wordpress_settings/wordpress_settings.yml --convert-markup
-    ```
-    Only post's content will be modified. Other attributes do not change.
-
-6. Create files with content types structure. In directory ```wordpress_settings``` is attached ```default_contentful_strucuture.json``` file.
-    Might be useful, because the structure of Wordpress is very static.
-    
-    ```
-    wordpress-exporter --config-file wordpress_settings/wordpress_settings.yml --create-contentful-model-from-json
+    wordpress-exporter --config-file settings.yml --extract-to-json --omit-content-model
     ```
 
-    Files with the content type structure will be saved at ```data_dir/collections```.
+    It will only extract the content and store it as JSON, you need to take care about the content mapping yourself.
+    See the [Contentful-importer](https://github.com/contentful/generic-importer.rb) for details on how this needs to be done.
 
-7. Use [Contentful-importer](https://github.com/contentful/generic-importer.rb) to import data to Contentful     platform.
+4. (Optional). HTML markup can be converted to markdown:
+
+    ```
+    wordpress-exporter --config-file settings.yml --convert-markup
+    ```
+    This will only touch the content body of a blog post, other attribues will not be changed.
+
+5. Use [Contentful-importer](https://github.com/contentful/generic-importer.rb) to import the content to [contentful.com](https://www.contentful.com)
