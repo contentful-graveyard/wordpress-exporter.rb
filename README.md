@@ -9,7 +9,6 @@ The following content will be extracted:
 * Blog with posts
 * Categories, tags and terms from custom taxonomies
 * Attachments
-* Authors
 
 ## Setup
 To extract the blog content you need to [export](http://en.support.wordpress.com/export/) it from the WordPress blog and save it as a XML file.
