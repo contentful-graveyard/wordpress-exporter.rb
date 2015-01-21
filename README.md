@@ -33,8 +33,8 @@ Use the [generic-importer](https://github.com/contentful/generic-importer.rb) to
 
 ## Step by step
 
-1. Export the content of the blog from WordPress and save it as XML file.
-2. Create YAML file with settings (eg. settings.yml) and fill in the required parameters:
+1. [Export](http://en.support.wordpress.com/export/) the content of the blog from WordPress and save it as XML file.
+2. Create YAML file with settings (eg. settings.yml) and fill in the required parameters.
    The generated `content types`, `entries` and `assets` will be saved to the `data_dir`.
 
 3. Extract the content from the XML file and generate the content model and JSON files for the import:
@@ -56,6 +56,6 @@ Use the [generic-importer](https://github.com/contentful/generic-importer.rb) to
     ```bash
     wordpress-exporter --config-file settings.yml --convert-markup
     ```
-    This will only touch the content body of a blog post, other attribues will not be changed.
+    This will only touch the content body of a blog post, other attributes will not be changed.
 
-5. Use the [Contentful-importer](https://github.com/contentful/generic-importer.rb) to import the content to [contentful.com](https://www.contentful.com)
+5. Use the [contentful-importer](https://github.com/contentful/generic-importer.rb) to import the content to [contentful.com](https://www.contentful.com)
