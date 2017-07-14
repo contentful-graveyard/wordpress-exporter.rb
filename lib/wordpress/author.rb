@@ -33,8 +33,7 @@ module Contentful
             email: email(author),
             display_name: display_name(author),
             first_name: first_name(author),
-            last_name: last_name(author),
-            wordpress_login: login(author)
+            last_name: last_name(author)
           }
         end
 

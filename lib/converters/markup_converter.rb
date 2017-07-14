@@ -17,11 +17,23 @@ module Contentful
           logger.info("Converting #{post_file_path} markups...")
           convert_post_content(post_file_path)
         end
+
+        Dir.glob("#{config.entries_dir}/page/*") do |post_file_path|
+          logger.info("Converting #{post_file_path} markups...")
+          convert_page_content(post_file_path)
+        end
+      end
+
+      def convert_page_content(post_file_path)
+        post_data = JSON.parse(File.read(post_file_path))
+        post_data['content'] = ReverseMarkdown.convert post_data['content']
+        overwrite_file(post_file_path, post_data)
       end
 
       def convert_post_content(post_file_path)
         post_data = JSON.parse(File.read(post_file_path))
         post_data['content'] = ReverseMarkdown.convert post_data['content']
+        post_data['excerpt'] = ReverseMarkdown.convert post_data['excerpt']
         overwrite_file(post_file_path, post_data)
       end
 

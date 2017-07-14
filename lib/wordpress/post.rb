@@ -12,8 +12,9 @@ module Contentful
         end
 
         def post_extractor
-          output_logger.info 'Extracting posts...'
+          output_logger.info 'Extracting posts and pages...'
           create_directory("#{settings.entries_dir}/post")
+          create_directory("#{settings.entries_dir}/page")
           extract_posts
         end
 
@@ -21,12 +22,25 @@ module Contentful
           "post_#{post.xpath('wp:post_id').text}"
         end
 
+        def page_id(page)
+          "page_#{page.xpath('wp:post_id').text}"
+        end
+
         private
 
         def extract_posts
           posts.each_with_object([]) do |post_xml, posts|
-            normalized_post = extract_data(post_xml)
-            write_json_to_file("#{settings.entries_dir}/post/#{post_id(post_xml)}.json", normalized_post)
+
+            if post_xml.xpath('wp:post_type').text == 'page'
+              normalized_post = extract_page_data(post_xml)
+
+              write_json_to_file("#{settings.entries_dir}/page/#{page_id(post_xml)}.json", normalized_post)
+            else
+              normalized_post = extract_post_data(post_xml)
+
+              write_json_to_file("#{settings.entries_dir}/post/#{post_id(post_xml)}.json", normalized_post)
+            end
+
             posts << normalized_post
           end
         end
@@ -35,7 +49,12 @@ module Contentful
           xml.xpath('//item').to_a
         end
 
-        def extract_data(xml_post)
+        def extract_page_data(xml_post)
+          post_entry = basic_page_data(xml_post)
+          post_entry
+        end
+
+        def extract_post_data(xml_post)
           post_entry = basic_post_data(xml_post)
           assign_content_elements_to_post(xml_post, post_entry)
           post_entry
@@ -57,12 +76,23 @@ module Contentful
           PostCategoryDomain.new(xml, xml_post, settings).extract_categories
         end
 
+        def basic_page_data(xml_post)
+          {
+            id: post_id(xml_post),
+            title: title(xml_post),
+            slug: url(xml_post),
+            content: content(xml_post),
+            created_at: created_page_at(xml_post)
+          }
+        end
+
         def basic_post_data(xml_post)
           {
             id: post_id(xml_post),
             title: title(xml_post),
-            wordpress_url: url(xml_post),
+            slug: url(xml_post),
             content: content(xml_post),
+	          excerpt: excerpt(xml_post),
             created_at: created_at(xml_post)
           }
         end
@@ -87,6 +117,14 @@ module Contentful
 
         def content(xml_post)
           xml_post.xpath('content:encoded').text
+        end
+
+        def excerpt(xml_post)
+          xml_post.xpath('excerpt:encoded').text
+        end
+
+        def created_page_at(xml_post)
+          Date.today
         end
 
         def created_at(xml_post)
