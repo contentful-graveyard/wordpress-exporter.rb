@@ -96,12 +96,11 @@ module Contentful
       end
 
       def load_existing_contentful_structure_file
-        if omit_content_model == true
-          JSON.parse(File.read(config.settings['contentful_structure_dir']), symbolize_names: true).with_indifferent_access
-        else
-          spec = Gem::Specification.find_by_name('wordpress-exporter')
-          JSON.parse(File.read("#{spec.gem_dir}/wordpress_settings/default_contentful_structure.json"), symbolize_names: true).with_indifferent_access
-        end
+        JSON.parse(File.read(config.settings['contentful_structure_dir']), symbolize_names: true).with_indifferent_access
+        # else
+        #   spec = Gem::Specification.find_by_name('wordpress-exporter')
+        #   JSON.parse(File.read("#{spec.gem_dir}/wordpress_settings/default_contentful_structure.json"), symbolize_names: true).with_indifferent_access
+        # end
       end
 
       def set_content_model_parameters
